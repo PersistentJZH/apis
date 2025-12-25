@@ -33,40 +33,40 @@ type NodeShard struct {
 	metav1.TypeMeta `json:",inline"`
 	// Standard object's metadata.
 	// +optional
-	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
 
 	// Specification of the desired behavior of the NodeShard.
-	Spec NodeShardSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
+	Spec NodeShardSpec `json:"spec"`
 
 	// Status represents the current information about a NodeShard.
 	// This data may not be up to date.
 	// +optional
-	Status NodeShardStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+	Status NodeShardStatus `json:"status,omitempty"`
 }
 
 // NodeShardSpec represents the template of a NodeShard.
 type NodeShardSpec struct {
 	// NodesDesired defines the list of nodes desired to be included in this NodeShard.
-	NodesDesired []string `json:"nodesDesired" protobuf:"bytes,1,rep,name=nodesDesired"`
+	NodesDesired []string `json:"nodesDesired"`
 }
 
 // NodeShardStatus represents the current state of a NodeShard.
 type NodeShardStatus struct {
 	// LastUpdateTime is the last time the status was updated.
 	// +optional
-	LastUpdateTime metav1.Time `json:"lastUpdateTime,omitempty" protobuf:"bytes,1,opt,name=lastUpdateTime"`
+	LastUpdateTime metav1.Time `json:"lastUpdateTime,omitempty"`
 
 	// NodesInUse is the list of nodes currently in use by the NodeShard.
 	// +optional
-	NodesInUse []string `json:"nodesInUse,omitempty" protobuf:"bytes,2,rep,name=nodesInUse"`
+	NodesInUse []string `json:"nodesInUse,omitempty"`
 
 	// NodesToRemove is the list of nodes preparing to be removed from the NodeShard.
 	// +optional
-	NodesToRemove []string `json:"nodesToRemove,omitempty" protobuf:"bytes,3,rep,name=nodesToRemove"`
+	NodesToRemove []string `json:"nodesToRemove,omitempty"`
 
 	// NodesToAdd is the list of nodes preparing to be added to the NodeShard.
 	// +optional
-	NodesToAdd []string `json:"nodesToAdd,omitempty" protobuf:"bytes,4,rep,name=nodesToAdd"`
+	NodesToAdd []string `json:"nodesToAdd,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -76,8 +76,8 @@ type NodeShardList struct {
 	metav1.TypeMeta `json:",inline"`
 	// Standard list metadata
 	// +optional
-	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+	metav1.ListMeta `json:"metadata,omitempty"`
 
 	// Items is a list of NodeShard objects.
-	Items []NodeShard `json:"items" protobuf:"bytes,2,rep,name=items"`
+	Items []NodeShard `json:"items"`
 }
